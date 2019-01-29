@@ -4,8 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 public final class SomeInformationActivity extends AppCompatActivity {
 
+    @Inject
     SomeInformation mSomeInformation;
 
     @Override
