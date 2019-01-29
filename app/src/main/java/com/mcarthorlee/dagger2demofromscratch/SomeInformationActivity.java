@@ -11,12 +11,12 @@ public final class SomeInformationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         //InformationUtil.setInformation(this);
         String key = getClass().getCanonicalName();
         Dispatcher.getInstance().registerToDispatcher(key, this).inject(key);
 
-        setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.textview);
         textView.setText(mSomeInformation.getInformation());
     }
