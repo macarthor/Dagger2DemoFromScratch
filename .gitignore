@@ -15,7 +15,15 @@ out/
 
 # Gradle files
 .gradle/
-build/
+
+# include app/build/generated/source/apt directory
+!app/build/
+app/build/*
+!app/build/generated/
+app/build/generated/*
+!app/build/generated/source/
+app/build/generated/source/*
+!app/build/generated/source/apt/
 
 # Local configuration file (sdk path, etc)
 local.properties
