@@ -16,9 +16,9 @@ public final class SomeInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //InformationUtil.setInformation(this);
-        String key = getClass().getCanonicalName();
-        Dispatcher.getInstance().registerToDispatcher(key, this).inject(key);
+        DaggerSomeInformationActivityComponent.builder()
+                .build()
+                .injectToSomeInformationActivity(this);
 
         TextView textView = findViewById(R.id.textview);
         textView.setText(mSomeInformation.getInformation());
