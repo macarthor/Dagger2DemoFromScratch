@@ -9,18 +9,15 @@ import javax.inject.Inject;
 public final class SomeInformationActivity extends AppCompatActivity {
 
     @Inject
-    SomeInformation mSomeInformation;
+    CoffeeMaker mCoffeeMaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DaggerSomeInformationActivityComponent.builder()
-                .build()
-                .injectToSomeInformationActivity(this);
-
-        TextView textView = findViewById(R.id.textview);
-        textView.setText(mSomeInformation.getInformation());
+        DaggerCoffeeComponent.builder().build().
+                injectToSomeInformationActivity(this);
+        mCoffeeMaker.brew();
     }
 }

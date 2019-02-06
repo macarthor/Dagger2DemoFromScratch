@@ -3,7 +3,7 @@ package com.mcarthorlee.dagger2demofromscratch;
 import dagger.Component;
 
 @Component
-interface SomeInformationActivityComponent {
+interface CoffeeComponent {
 
     void injectToSomeInformationActivity(SomeInformationActivity someInformationActivity);
 }

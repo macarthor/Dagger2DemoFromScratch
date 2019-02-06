@@ -6,25 +6,23 @@ import javax.inject.Provider;
 
 public final class SomeInformationActivity_MembersInjector
     implements MembersInjector<SomeInformationActivity> {
-  private final Provider<SomeInformation> mSomeInformationProvider;
+  private final Provider<CoffeeMaker> mCoffeeMakerProvider;
 
-  public SomeInformationActivity_MembersInjector(
-      Provider<SomeInformation> mSomeInformationProvider) {
-    this.mSomeInformationProvider = mSomeInformationProvider;
+  public SomeInformationActivity_MembersInjector(Provider<CoffeeMaker> mCoffeeMakerProvider) {
+    this.mCoffeeMakerProvider = mCoffeeMakerProvider;
   }
 
   public static MembersInjector<SomeInformationActivity> create(
-      Provider<SomeInformation> mSomeInformationProvider) {
-    return new SomeInformationActivity_MembersInjector(mSomeInformationProvider);
+      Provider<CoffeeMaker> mCoffeeMakerProvider) {
+    return new SomeInformationActivity_MembersInjector(mCoffeeMakerProvider);
   }
 
   @Override
   public void injectMembers(SomeInformationActivity instance) {
-    injectMSomeInformation(instance, mSomeInformationProvider.get());
+    injectMCoffeeMaker(instance, mCoffeeMakerProvider.get());
   }
 
-  public static void injectMSomeInformation(
-      SomeInformationActivity instance, Object mSomeInformation) {
-    instance.mSomeInformation = (SomeInformation) mSomeInformation;
+  public static void injectMCoffeeMaker(SomeInformationActivity instance, Object mCoffeeMaker) {
+    instance.mCoffeeMaker = (CoffeeMaker) mCoffeeMaker;
   }
 }
