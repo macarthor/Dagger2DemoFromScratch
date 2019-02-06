@@ -13,13 +13,23 @@ public final class DaggerSomeInformationActivityComponent
     return new Builder().build();
   }
 
+  private SomeInformation getSomeInformation() {
+    return injectSomeInformation(
+        SomeInformation_Factory.newSomeInformation(new OtherInformation()));
+  }
+
   @Override
   public void injectToSomeInformationActivity(SomeInformationActivity someInformationActivity) {
     injectSomeInformationActivity(someInformationActivity);
   }
 
+  private SomeInformation injectSomeInformation(SomeInformation instance) {
+    SomeInformation_MembersInjector.injectMOtherInformation(instance, new OtherInformation());
+    return instance;
+  }
+
   private SomeInformationActivity injectSomeInformationActivity(SomeInformationActivity instance) {
-    SomeInformationActivity_MembersInjector.injectMSomeInformation(instance, new SomeInformation());
+    SomeInformationActivity_MembersInjector.injectMSomeInformation(instance, getSomeInformation());
     return instance;
   }
 

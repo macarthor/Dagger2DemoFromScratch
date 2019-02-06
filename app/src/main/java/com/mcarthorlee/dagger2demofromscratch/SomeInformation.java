@@ -4,14 +4,15 @@ import javax.inject.Inject;
 
 final class SomeInformation {
 
-    private String mInformation;
+    @Inject
+    OtherInformation mOtherInformation;
 
     @Inject
-    SomeInformation() {
-        mInformation = "some_information";
+    SomeInformation(OtherInformation otherInformation) {
+        mOtherInformation = otherInformation;
     }
 
     String getInformation() {
-        return mInformation;
+        return mOtherInformation.getInformation();
     }
 }

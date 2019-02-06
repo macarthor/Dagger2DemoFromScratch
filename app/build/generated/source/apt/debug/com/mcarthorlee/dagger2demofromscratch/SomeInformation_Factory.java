@@ -2,20 +2,32 @@
 package com.mcarthorlee.dagger2demofromscratch;
 
 import dagger.internal.Factory;
+import javax.inject.Provider;
 
 public final class SomeInformation_Factory implements Factory<SomeInformation> {
-  private static final SomeInformation_Factory INSTANCE = new SomeInformation_Factory();
+  private final Provider<OtherInformation> mOtherInformationAndOtherInformationProvider;
+
+  public SomeInformation_Factory(
+      Provider<OtherInformation> mOtherInformationAndOtherInformationProvider) {
+    this.mOtherInformationAndOtherInformationProvider =
+        mOtherInformationAndOtherInformationProvider;
+  }
 
   @Override
   public SomeInformation get() {
-    return new SomeInformation();
+    SomeInformation instance =
+        new SomeInformation(mOtherInformationAndOtherInformationProvider.get());
+    SomeInformation_MembersInjector.injectMOtherInformation(
+        instance, mOtherInformationAndOtherInformationProvider.get());
+    return instance;
   }
 
-  public static SomeInformation_Factory create() {
-    return INSTANCE;
+  public static SomeInformation_Factory create(
+      Provider<OtherInformation> mOtherInformationAndOtherInformationProvider) {
+    return new SomeInformation_Factory(mOtherInformationAndOtherInformationProvider);
   }
 
-  public static SomeInformation newSomeInformation() {
-    return new SomeInformation();
+  public static SomeInformation newSomeInformation(Object otherInformation) {
+    return new SomeInformation((OtherInformation) otherInformation);
   }
 }
