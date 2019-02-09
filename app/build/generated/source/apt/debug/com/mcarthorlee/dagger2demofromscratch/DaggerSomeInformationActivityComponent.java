@@ -14,8 +14,7 @@ public final class DaggerSomeInformationActivityComponent
   }
 
   private SomeInformation getSomeInformation() {
-    return injectSomeInformation(
-        SomeInformation_Factory.newSomeInformation(new OtherInformation()));
+    return injectSomeInformation(SomeInformation_Factory.newSomeInformation());
   }
 
   @Override

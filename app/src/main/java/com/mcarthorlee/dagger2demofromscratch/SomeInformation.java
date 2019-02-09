@@ -8,9 +8,7 @@ final class SomeInformation {
     OtherInformation mOtherInformation;
 
     @Inject
-    SomeInformation(OtherInformation otherInformation) {
-        mOtherInformation = otherInformation;
-    }
+    SomeInformation() {}
 
     String getInformation() {
         return mOtherInformation.getInformation();

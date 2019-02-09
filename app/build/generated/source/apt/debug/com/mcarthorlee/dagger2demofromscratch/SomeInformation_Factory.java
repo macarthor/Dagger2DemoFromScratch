@@ -5,29 +5,26 @@ import dagger.internal.Factory;
 import javax.inject.Provider;
 
 public final class SomeInformation_Factory implements Factory<SomeInformation> {
-  private final Provider<OtherInformation> mOtherInformationAndOtherInformationProvider;
+  private final Provider<OtherInformation> mOtherInformationProvider;
 
-  public SomeInformation_Factory(
-      Provider<OtherInformation> mOtherInformationAndOtherInformationProvider) {
-    this.mOtherInformationAndOtherInformationProvider =
-        mOtherInformationAndOtherInformationProvider;
+  public SomeInformation_Factory(Provider<OtherInformation> mOtherInformationProvider) {
+    this.mOtherInformationProvider = mOtherInformationProvider;
   }
 
   @Override
   public SomeInformation get() {
-    SomeInformation instance =
-        new SomeInformation(mOtherInformationAndOtherInformationProvider.get());
+    SomeInformation instance = new SomeInformation();
     SomeInformation_MembersInjector.injectMOtherInformation(
-        instance, mOtherInformationAndOtherInformationProvider.get());
+        instance, mOtherInformationProvider.get());
     return instance;
   }
 
   public static SomeInformation_Factory create(
-      Provider<OtherInformation> mOtherInformationAndOtherInformationProvider) {
-    return new SomeInformation_Factory(mOtherInformationAndOtherInformationProvider);
+      Provider<OtherInformation> mOtherInformationProvider) {
+    return new SomeInformation_Factory(mOtherInformationProvider);
   }
 
-  public static SomeInformation newSomeInformation(Object otherInformation) {
-    return new SomeInformation((OtherInformation) otherInformation);
+  public static SomeInformation newSomeInformation() {
+    return new SomeInformation();
   }
 }
