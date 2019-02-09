@@ -2,8 +2,8 @@ package com.mcarthorlee.dagger2demofromscratch;
 
 import dagger.Component;
 
-@Component
-interface CoffeeComponent {
+@Component (modules = {SomeInformationModule.class})
+interface SomeInformationActivityComponent {
 
     void injectToSomeInformationActivity(SomeInformationActivity someInformationActivity);
 }
