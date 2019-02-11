@@ -20,14 +20,20 @@ public final class DaggerSomeInformationActivityComponent
   }
 
   private SomeInformation getSomeInformation() {
-    return new SomeInformation(
-        SomeInformationModule_GenerateInformationFactory.proxyGenerateInformation(
-            someInformationModule));
+    return injectSomeInformation(SomeInformation_Factory.newSomeInformation());
   }
 
   @Override
   public void injectToSomeInformationActivity(SomeInformationActivity someInformationActivity) {
     injectSomeInformationActivity(someInformationActivity);
+  }
+
+  private SomeInformation injectSomeInformation(SomeInformation instance) {
+    SomeInformation_MembersInjector.injectMInformation(
+        instance,
+        SomeInformationModule_GenerateInformationFactory.proxyGenerateInformation(
+            someInformationModule));
+    return instance;
   }
 
   private SomeInformationActivity injectSomeInformationActivity(SomeInformationActivity instance) {

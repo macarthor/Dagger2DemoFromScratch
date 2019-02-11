@@ -4,12 +4,11 @@ import javax.inject.Inject;
 
 final class SomeInformation {
 
+    @Inject
     String mInformation;
 
     @Inject
-    SomeInformation(String information) {
-        mInformation = information;
-    }
+    SomeInformation() {}
 
     String getInformation() {
         return mInformation;
